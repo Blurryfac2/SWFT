@@ -1,0 +1,447 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Partículas de fondo animadas */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #ffd700;
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes float {
+    0%, 100% { 
+        opacity: 0; 
+        transform: translateY(100vh) scale(0);
+        filter: hue-rotate(0deg);
+    }
+    10% { 
+        opacity: 1; 
+        transform: translateY(90vh) scale(1);
+    }
+    90% { 
+        opacity: 1; 
+        transform: translateY(10vh) scale(1);
+        filter: hue-rotate(120deg);
+    }
+}
+
+/* Main content */
+main {
+    position: relative;
+    z-index: 10;
+    padding: 6rem 1rem 4rem;
+    min-height: calc(100vh - 150px);
+}
+
+/* Hero Section de Historia */
+.historia-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.historia-hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd700, #ff6b35);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.historia-hero p {
+    font-size: 1.2rem;
+    color: #ffd700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Sección principal */
+#historia-vision-mision {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Container principal de historia */
+.historia-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+    .historia-main-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 6rem;
+    }
+}
+
+/* Imagen principal */
+.historia-image-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(255, 107, 53, 0.2);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1s ease-out 0.3s forwards;
+}
+
+@media (min-width: 1024px) {
+    .historia-image-container {
+        width: 50%;
+        max-width: 600px;
+    }
+}
+
+.historia-image-container:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.6),
+        0 0 80px rgba(255, 107, 53, 0.4);
+}
+
+.historia-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 53, 0.1), 
+        transparent, 
+        rgba(255, 215, 0, 0.1)
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.historia-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: all 0.4s ease;
+}
+
+.historia-image-container:hover .historia-image {
+    transform: scale(1.05);
+}
+
+/* Contenido de texto */
+.historia-content {
+    width: 100%;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 1s ease-out 0.5s forwards;
+}
+
+@media (min-width: 1024px) {
+    .historia-content {
+        width: 50%;
+    }
+}
+
+.historia-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    background: linear-gradient(45deg, #ff6b35, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+}
+
+.historia-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: justify;
+}
+
+.historia-highlight {
+    color: #ffd700;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Animaciones de entrada */
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grid de Visión y Misión */
+.vision-mision-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .vision-mision-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+}
+
+/* Cards de Visión y Misión */
+.vm-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    position: relative;
+}
+
+.vm-card:nth-child(1) {
+    animation: fadeInUp 0.8s ease-out 0.7s forwards;
+}
+
+.vm-card:nth-child(2) {
+    animation: fadeInUp 0.8s ease-out 0.9s forwards;
+}
+
+.vm-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(255, 107, 53, 0.3);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* Bordes coloridos para las cards */
+.vm-card.vision::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #066699, #4e7bff, #00e0b4);
+}
+
+.vm-card.mision::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #35a545, #66bb6a, #4caf50);
+}
+
+/* Imágenes de las cards */
+.vm-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: all 0.4s ease;
+    filter: brightness(0.8);
+}
+
+.vm-card:hover .vm-image {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+/* Contenido de las cards */
+.vm-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.vm-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.vm-title.vision {
+    color: #4e7bff;
+    text-shadow: 0 0 15px rgba(78, 123, 255, 0.3);
+}
+
+.vm-title.mision {
+    color: #35a545;
+    text-shadow: 0 0 15px rgba(53, 165, 69, 0.3);
+}
+
+.vm-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: justify;
+}
+
+/* Efectos de sparkle */
+.sparkle-effect {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.sparkle {
+    position: absolute;
+    color: #ffd700;
+    font-size: 1rem;
+    animation: sparkleFloat 3s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% { 
+        opacity: 0; 
+        transform: translateY(0) scale(0.5);
+    }
+    50% { 
+        opacity: 1; 
+        transform: translateY(-20px) scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 5rem 1rem 3rem;
+    }
+
+    .historia-main-container {
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .historia-content {
+        padding: 0 1rem;
+    }
+
+    .vm-content {
+        padding: 1.5rem;
+    }
+
+    .vm-image {
+        height: 200px;
+    }
+
+    .vision-mision-grid {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .historia-hero h1 {
+        font-size: 2rem;
+    }
+
+    .historia-title {
+        font-size: 1.8rem;
+    }
+
+    .historia-text {
+        font-size: 1rem;
+    }
+
+    .vm-title {
+        font-size: 1.5rem;
+    }
+
+    .vm-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* Efecto de carga inicial */
+.page-wrapper {
+    animation: pageLoad 1s ease-out;
+}
+
+@keyframes pageLoad {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

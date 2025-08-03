@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Partículas de fondo animadas */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #ffd700;
+    border-radius: 50%;
+    animation: float 10s infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes float {
+    0%, 100% { 
+        opacity: 0; 
+        transform: translateY(100vh) scale(0);
+        filter: hue-rotate(0deg);
+    }
+    10% { 
+        opacity: 1; 
+        transform: translateY(90vh) scale(1);
+    }
+    90% { 
+        opacity: 1; 
+        transform: translateY(10vh) scale(1);
+        filter: hue-rotate(240deg);
+    }
+}
+
+/* Main content */
+main {
+    position: relative;
+    z-index: 10;
+    padding: 6rem 1rem 4rem;
+    min-height: calc(100vh - 150px);
+}
+
+/* Hero Section de Contacto */
+.contact-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.contact-hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd700, #ff6b35);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.contact-hero p {
+    font-size: 1.2rem;
+    color: #ffd700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Container principal */
+#contacto {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    #contacto {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+}
+
+/* Tarjetas principales */
+.tarjeta {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.tarjeta:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.tarjeta:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo en tarjeta de información */
+.tarjeta img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 2rem;
+    border: 4px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+/* Información de contacto */
+.info {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.info i {
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-top: 0.2rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.info div h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info div h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ff6b35;
+    margin-bottom: 0.3rem;
+    margin-top: 0.8rem;
+}
+
+.info div p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 0.2rem;
+}
+
+/* Mapa de contacto */
+.mapa-contacto {
+    margin: 2rem 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 107, 53, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.mapa-contacto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 107, 53, 0.1), 
+        transparent, 
+        rgba(255, 215, 0, 0.1)
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.mapa-contacto iframe {
+    filter: brightness(0.8) contrast(1.2) saturate(1.1);
+    transition: filter 0.3s ease;
+}
+
+/* Formulario espectacular */
+.tarjeta h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #ff6b35, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffd700;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+/* Inputs y textarea */
+input, textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.3),
+        inset 0 0 20px rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Recaptcha wrapper */
+.recaptcha-wrapper {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.g-recaptcha {
+    transform: scale(0.9);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón de enviar espectacular */
+.btn-enviar {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd700);
+    border: none;
+    border-radius: 25px;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 
+        0 15px 30px rgba(255, 107, 53, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    margin-top: 1.5rem;
+}
+
+.btn-enviar:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(255, 107, 53, 0.6),
+        inset 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.btn-enviar:active {
+    transform: translateY(-2px) scale(1);
+}
+
+/* Efecto de brillo en el botón */
+.btn-enviar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-enviar:hover::before {
+    left: 100%;
+}
+
+/* Icono del botón */
+.btn-enviar i {
+    margin-right: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-enviar:hover i {
+    transform: translateX(5px);
+}
+
+.btn-enviar i.fly {
+    display: inline-block;
+    animation: fly 2s ease-in-out infinite;
+}
+
+@keyframes fly {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Mensajes de éxito y error */
+.mensaje {
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    animation: messageSlide 0.5s ease-out;
+}
+
+@keyframes messageSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mensaje.success {
+    background: rgba(53, 165, 69, 0.2);
+    border: 2px solid #35a545;
+    color: #4caf50;
+    box-shadow: 0 0 20px rgba(53, 165, 69, 0.3);
+}
+
+.mensaje.error {
+    background: rgba(244, 67, 54, 0.2);
+    border: 2px solid #f44336;
+    color: #ff6b6b;
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.3);
+}
+
+/* Efectos de sparkle */
+.sparkle-effect {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.sparkle {
+    position: absolute;
+    color: #ffd700;
+    font-size: 1rem;
+    animation: sparkleFloat 4s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% { 
+        opacity: 0; 
+        transform: translateY(0) scale(0.5) rotate(0deg);
+    }
+    50% { 
+        opacity: 1; 
+        transform: translateY(-30px) scale(1) rotate(180deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    main {
+        padding: 5rem 1rem 3rem;
+    }
+
+    #contacto {
+        gap: 2rem;
+    }
+
+    .tarjeta {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .tarjeta {
+        padding: 1.5rem;
+    }
+
+    .info {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .info i {
+        font-size: 2rem;
+    }
+
+    .tarjeta img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .g-recaptcha {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 480px) {
+    .tarjeta {
+        padding: 1rem;
+    }
+
+    .tarjeta h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-enviar {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .g-recaptcha {
+        transform: scale(0.7);
+    }
+}
+
+/* Animación de carga inicial */
+.page-wrapper {
+    animation: pageLoad 1s ease-out;
+}
+
+@keyframes pageLoad {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

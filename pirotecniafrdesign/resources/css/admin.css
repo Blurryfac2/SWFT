@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aseguramos que el fondo cubra toda la pantalla */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000000 !important; /* fondo negro forzado */
+  color: #facc15; /* texto amarillo global */
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+/* Encabezados en amarillo */
+h1, h2, h3, h4, h5, h6 {
+  color: #facc15 !important;
+  margin-top: 0;
+}
